@@ -1,8 +1,8 @@
-# Flow Control
+# Onboarding Prototype
 Prototype app which implements the flow of controllers - like onboarding tutorial or even onboarding setup.
 
 This can be used as a template or idea for project where it is needed to have some kind of flow setup and where data from 
-ViewControllers in the flow needs to be saved to later be used in somehow (e.g. API call, saving the data locally).
+ViewControllers in the flow needs to be saved for later to be used in some way (e.g. API call, saving the data locally).
 
 ## Flow navigation
 
@@ -21,12 +21,12 @@ It is the one which knows how to instantiate ViewController based on their type.
 
 ```
 protocol FlowControllable: class {
-    
-    var type: FlowControllerType { get set }
-    var profile: UserProfile? { get set }
-    var delegate: FlowControllerDelegate? { get set }
-    
-    func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?)
+
+var type: FlowControllerType { get set }
+var profile: UserProfile? { get set }
+var delegate: FlowControllerDelegate? { get set }
+
+func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?)
 }
 ```
 Each ViewController in the flow must conform to the ceratain protocol - this way the communication between the 
@@ -40,12 +40,12 @@ Each of those ViewControllers which show up in the flow will have the same imple
 
 ```
 extension FlowControllable {
-    
-    func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?) {
-        self.profile = profile
-        self.type = type
-        self.delegate = delegate
-    }
+
+func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?) {
+self.profile = profile
+self.type = type
+self.delegate = delegate
+}
 }
 ```
 
@@ -57,9 +57,9 @@ Let's take a look at the `FlowControllerDelegate` protocol:
 
 ```
 protocol FlowControllerDelegate: class {
-    
-    func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem])
-    func flowControllerShouldSkip(_ viewController: UIViewController)
+
+func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem])
+func flowControllerShouldSkip(_ viewController: UIViewController)
 }
 ```
 From now on I will address the ViewControllers in the flow as `FlowViewController` just for easier understanding. So `RootViewController` has on his view controller stack multiple `FlowViewController`s.
@@ -74,16 +74,16 @@ If user wishes to skip the current ViewController in the flow, it will call its 
 
 ```
 struct FlowItem {
-    let type: FlowItemType
+let type: FlowItemType
 }
 ```
 ```
 enum FlowItemType {
-    case firstName(String)
-    case lastName(String)
-    case company(String)
-    case mood(String)
-    case hasBeacon(Bool)
+case firstName(String)
+case lastName(String)
+case company(String)
+case mood(String)
+case hasBeacon(Bool)
 }
 ```
 
@@ -91,4 +91,4 @@ enum FlowItemType {
 Keep in mind all these types are just an example for the problem I had and can be replaced with your own types which are suitable for your case.
 
 
-## To be continued...
+
