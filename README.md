@@ -4,11 +4,13 @@ Prototype app which implements the flow of controllers - like onboarding tutoria
 This can be used as a template or idea for project where it is needed to have some kind of flow setup and where data from 
 ViewControllers in the flow needs to be saved for later to be used in some way (e.g. API call, saving the data locally).
 
+
 ## Flow navigation
 
 In this project the flow of controllers is implemented such that it is independant of the ViewController from which it is
 called since the class FlowCoordinator, as its name says, coordinates the flow. More specifically, FlowCoordinator 
 determines the order of ViewControllers in the flow. 
+
 
 ### RootViewController
 
@@ -19,6 +21,7 @@ It is the one which knows how to instantiate ViewController based on their type.
 
 `RootViewController` has a setup method which is called to setup the types (`FlowControllerType`) of `FlowControllable` objects and the `completion` block which will be executed once the flow comes to an end. 
 Passed `FlowControllerType`s are types of objects which will be presented to the user in some form (can be ViewControllers, Alerts etc.).
+
 
 ### FlowControllable
 
@@ -52,7 +55,30 @@ extension FlowControllable {
 }
 ```
 
+
 ## Passing data between controllers
+
+### FlowItem and FlowItemType
+
+```
+struct FlowItem {
+let type: FlowItemType
+}
+```
+```
+enum FlowItemType {
+case firstName(String)
+case lastName(String)
+case company(String)
+case mood(String)
+case hasBeacon(Bool)
+}
+```
+
+`FlowItem` consist only of its type `FlowItemType` which is an enum with associated values. Value of the item is transfered as an associated value of that enum. There is nothing complex here :)
+Keep in mind all these types are just an example for the problem I had and can be replaced with your own types which are suitable for your case.
+
+
 
 ### FlowControllerDelegate
 
@@ -65,33 +91,16 @@ protocol FlowControllerDelegate: class {
     func flowControllerShouldSkip(_ viewController: UIViewController)
 }
 ```
-From now on I will address the ViewControllers in the flow as `FlowViewController` just for easier understanding. So `RootViewController` has on his view controller stack multiple `FlowViewController`s.
 
-This protocol is how `FlowViewController`s will report changes to their `delegate`. It is the "contract" between the delegate and the `FlowViewController` how the communication will be conducted.
+This protocol is how `FlowControllable`s will report changes to their `delegate`. It is the "contract" between the delegate and the `FlowControllable` how the communication will be conducted.
 
-If user wishes to skip the current ViewController in the flow, it will call its delegate method `flowControllerShouldSkip(_:)`, notice how this is independant on the implementation of skip feature in the presented `FlowViewController` it can be button, it could be some gesture which means "skip this view controller", it can be whatever, but when it happens, `delegate` gets informed about it and will undertake actions to handle this event.
+If user wishes to skip the current `FlowControllable` object in the flow, it will call its delegate method `flowControllerShouldSkip(_:)`, notice how this is independant on the implementation of skip feature in the presented `FlowControllable` it can be button, it could be some gesture which means "skip this view controller", it can be whatever, but when it happens, `delegate` gets informed about it and will undertake actions to handle this event.
 
-`FlowViewController` can also have some kind of data entry (e.g. text fields, drop down menus...), so user chooses some options, enters his info or whatever - now when user is done with that, we want to save the data temporarily until the whole process is finished. This is where `flowControllerShouldFinishShowing(_:with:)` has its purpose - the `FlowViewController` collects the data user entered and wraps each part of data in `FlowItem`. Since data can consist of more parts sometimes more `FlowItem`s are needed to wrap all the data. There is no problem with that since `flowControllerShouldFinishShowing(_:with:)` gets an array of `FlowItem`s as parameter (`[FlowItem]`). Delegate will then do the rest of the work to hand such event as saving data locally until the while process finishes.
+`FlowControllable` objects can also have some kind of data entry (e.g. text fields, drop down menus...), so user chooses some options, enters his info or whatever - now when user is done with that, we want to save the data temporarily until the whole process is finished. This is where `flowControllerShouldFinishShowing(_:with:)` has its purpose - the `FlowControllable` has a duty to collect the data user entered and wrap each part of data in `FlowItem`. 
 
-### FlowItem and FlowItemType
+Since data can consist of more parts sometimes more `FlowItem`s may be needed to wrap all data. There is no problem with that since `flowControllerShouldFinishShowing(_:with:)` gets an array of `FlowItem`s as parameter (`[FlowItem]`). Delegate will then do the rest of the work to handle such event. 
 
-```
-struct FlowItem {
-    let type: FlowItemType
-}
-```
-```
-enum FlowItemType {
-    case firstName(String)
-    case lastName(String)
-    case company(String)
-    case mood(String)
-    case hasBeacon(Bool)
-}
-```
-
-`FlowItem` consist only of its type `FlowItemType` which is an enum with associated values. Value of the item is transfered as an associated value of the enum `FlowItemType`. There is nothing complex here :)
-Keep in mind all these types are just an example for the problem I had and can be replaced with your own types which are suitable for your case.
+It will most likely hang on to the data until the whole flow finishes and then pass all gathered data to `completion` block provided in the `setup(with:completion:)` method. 
 
 ## End of the flow
 
