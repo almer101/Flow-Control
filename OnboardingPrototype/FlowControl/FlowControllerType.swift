@@ -15,7 +15,7 @@ enum FlowControllerType {
     // beacon related view controllers
     case beaconInfo
     case beaconSearch
-//    case beaconFailed
+    case beaconFailed
     case beaconSuccess
     
     // user info

@@ -9,9 +9,10 @@
 import UIKit
 
 class FlowViewController: UIViewController, FlowControllable {
-
-    var type: FlowItemType
+    
+    var type: FlowControllerType
     var profile: UserProfile?
+    var delegate: FlowControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class FlowViewController: UIViewController, FlowControllable {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         type = .none
         profile = nil
+        delegate = nil
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     

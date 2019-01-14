@@ -31,15 +31,38 @@ class RootViewController: UINavigationController {
         }
         
         let type = types[next]
-        let viewController: UIViewController & FlowControllable
+        guard let viewController: BaseFlowViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BaseFlowViewController") as? BaseFlowViewController else { return }
         
         switch type {
         case .firstNameAndLastName:
+            viewController.setup(with: "First and last name")
+            viewController.setup(with: nil, type: .firstNameAndLastName, delegate: self)
         case .mood:
+            viewController.setup(with: "Mood")
+            viewController.setup(with: nil, type: .mood, delegate: self)
         case .company:
+            viewController.setup(with: "Company")
+            viewController.setup(with: nil, type: .company, delegate: self)
+        case .finish:
+            viewController.setup(with: "Finish")
+            viewController.setup(with: nil, type: .finish, delegate: self)
+        case .beaconInfo:
+            viewController.setup(with: "Beacon info")
+            viewController.setup(with: nil, type: .beaconInfo, delegate: self)
+        case .beaconSearch:
+            viewController.setup(with: "Beacon search")
+            viewController.setup(with: nil, type: .beaconSearch, delegate: self)
+        case .beaconSuccess:
+            viewController.setup(with: "Beacon success")
+            viewController.setup(with: nil, type: .beaconSuccess, delegate: self)
+        case .beaconFailed:
+            viewController.setup(with: "Beacon failed")
+            viewController.setup(with: nil, type: .beaconFailed, delegate: self)
         default:
-            print("Type \(type)")
+            print("Default case of switch statement - type \(type)")
         }
+        
+        pushViewController(viewController, animated: true)
     }
     
     // when nil is returned it means the end is reached.
@@ -48,7 +71,7 @@ class RootViewController: UINavigationController {
         let type = visibleViewController.type
         
         if let index = types.firstIndex(of: type) {
-            return (index + 1) <= types.endIndex ? index + 1 : nil
+            return (index + 1) < types.endIndex ? index + 1 : nil
         }
         return nil
     }
@@ -68,14 +91,14 @@ extension RootViewController: FlowControllerDelegate {
     func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem]) {
         let types = items.map { $0.type }
         
-        flowItems.removeAll { item in types.contains(where: {item.type}) }
-        items.forEach { item in
+        flowItems.removeAll { item in types.contains { $0 == item.type } }
+        flowItems.append(contentsOf: items)
         
-        }
+        showNextViewController()
     }
     
     func flowControllerShouldSkip(_ viewController: UIViewController) {
-        // impl
+        showNextViewController()
     }
     
 }
