@@ -1,11 +1,3 @@
-//
-//  BaseFlowViewController.swift
-//  OnboardingPrototype
-//
-//  Created by Ivan Almer on 11/01/2019.
-//  Copyright © 2019 AG04. All rights reserved.
-//
-
 import UIKit
 
 class BaseFlowViewController: UIViewController, FlowControllable {
@@ -51,7 +43,7 @@ class BaseFlowViewController: UIViewController, FlowControllable {
         case .mood:
             items.append(FlowItem(type: .mood("Good mood")))
         case .company:
-            items.append(FlowItem(type: .company("AG04")))
+            items.append(FlowItem(type: .company("Google")))
         case .beaconSuccess:
             items.append(FlowItem(type: .hasBeacon(true)))
         case .beaconFailed:
