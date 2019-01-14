@@ -17,16 +17,19 @@ determines the order of ViewControllers in the flow.
 This is where the logic happens.
 It is the one which knows how to instantiate ViewController based on their type. Types of flow ViewControllers are specified by enum `FlowControllerType`.
 
+`RootViewController` has a setup method which is called to setup the types (`FlowControllerType`) of `FlowControllable` objects and the `completion` block which will be executed once the flow comes to an end. 
+Passed `FlowControllerType`s are types of objects which will be presented to the user in some form (can be ViewControllers, Alerts etc.).
+
 ### FlowControllable
 
 ```
 protocol FlowControllable: class {
 
-var type: FlowControllerType { get set }
-var profile: UserProfile? { get set }
-var delegate: FlowControllerDelegate? { get set }
+    var type: FlowControllerType { get set }
+    var profile: UserProfile? { get set }
+    var delegate: FlowControllerDelegate? { get set }
 
-func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?)
+    func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?)
 }
 ```
 Each ViewController in the flow must conform to the ceratain protocol - this way the communication between the 
@@ -41,11 +44,11 @@ Each of those ViewControllers which show up in the flow will have the same imple
 ```
 extension FlowControllable {
 
-func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?) {
-self.profile = profile
-self.type = type
-self.delegate = delegate
-}
+    func setup(with profile: UserProfile?, type: FlowControllerType, delegate: FlowControllerDelegate?) {
+        self.profile = profile
+        self.type = type
+        self.delegate = delegate
+    }
 }
 ```
 
@@ -58,8 +61,8 @@ Let's take a look at the `FlowControllerDelegate` protocol:
 ```
 protocol FlowControllerDelegate: class {
 
-func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem])
-func flowControllerShouldSkip(_ viewController: UIViewController)
+    func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem])
+    func flowControllerShouldSkip(_ viewController: UIViewController)
 }
 ```
 From now on I will address the ViewControllers in the flow as `FlowViewController` just for easier understanding. So `RootViewController` has on his view controller stack multiple `FlowViewController`s.
@@ -74,21 +77,23 @@ If user wishes to skip the current ViewController in the flow, it will call its 
 
 ```
 struct FlowItem {
-let type: FlowItemType
+    let type: FlowItemType
 }
 ```
 ```
 enum FlowItemType {
-case firstName(String)
-case lastName(String)
-case company(String)
-case mood(String)
-case hasBeacon(Bool)
+    case firstName(String)
+    case lastName(String)
+    case company(String)
+    case mood(String)
+    case hasBeacon(Bool)
 }
 ```
 
 `FlowItem` consist only of its type `FlowItemType` which is an enum with associated values. Value of the item is transfered as an associated value of the enum `FlowItemType`. There is nothing complex here :)
 Keep in mind all these types are just an example for the problem I had and can be replaced with your own types which are suitable for your case.
 
+## End of the flow
 
+Once the `RootViewController` determines that the end of the flow is reached it has to do final operations if needed and call, already mentioned, `completion` block. When this happens, `RootViewController`'s job is done and it is not anymore needed.
 
