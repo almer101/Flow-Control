@@ -35,8 +35,7 @@ protocol FlowControllable: class {
 }
 ```
 Each ViewController in the flow must conform to the certain protocol - this way the communication between RootViewController and its "children" is abstracted. Usage of protocols in situations like this is very practical 
-since it provides the possibility to change the implementation of the class which conforms to some protocol and the 
-way communication will not be disrupted.
+since it provides the possibility to change the implementation of the class which conforms to some protocol and the way of communication will not be disrupted.
 
 Every class which conforms to it is obligated to have the 3 properties which are the type which they represent in the flow, the item which they hold and can edit (in case this is some kind of setup or edit flow) and the delegate to whom they report the changes.
 
