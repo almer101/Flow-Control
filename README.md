@@ -1,10 +1,10 @@
 # onboardingPrototype
 Prototype app which implements the flow of controllers - like onboarding tutorial or even onboarding setup.
 
-## Flow navigation
-
 This can be used as a template or idea for project where it is needed to have some kind of flow setup and where data from 
 ViewControllers in the flow needs to be saved for later to be used in some way (e.g. API call, saving the data locally).
+
+## Flow navigation
 
 In this project the flow of controllers is implemented such that it is independant of the ViewController from which it is
 called since the class FlowCoordinator, as its name says, coordinates the flow. More specifically, FlowCoordinator 
