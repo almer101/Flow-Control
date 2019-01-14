@@ -62,16 +62,17 @@ extension FlowControllable {
 
 ```
 struct FlowItem {
-let type: FlowItemType
+    let type: FlowItemType
 }
 ```
 ```
 enum FlowItemType {
-case firstName(String)
-case lastName(String)
-case company(String)
-case mood(String)
-case hasBeacon(Bool)
+
+    case firstName(String)
+    case lastName(String)
+    case company(String)
+    case mood(String)
+    case hasBeacon(Bool)
 }
 ```
 
