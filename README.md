@@ -86,8 +86,8 @@ Let's take a look at the `FlowControllerDelegate` protocol:
 ```
 protocol FlowControllerDelegate: class {
 
-    func flowControllerShouldFinishShowing(_ viewController: UIViewController, with items: [FlowItem])
-    func flowControllerShouldSkip(_ viewController: UIViewController)
+    func flowControllerShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem])
+    func flowControllerShouldSkip(_ flowControllable: FlowControllable)
 }
 ```
 
