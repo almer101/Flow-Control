@@ -1,4 +1,4 @@
-# Onboarding Prototype
+# Flow Control
 Prototype app which implements the flow of controllers - like onboarding tutorial or even onboarding setup.
 
 This can be used as a template or idea for project where it is needed to have some kind of flow setup and where data from 
