@@ -7,21 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CA7C35C21EC771C002BEA6F /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C35B21EC771C002BEA6F /* FlowCoordinator.swift */; };
+		2CA7C35E21EC7B1A002BEA6F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C35D21EC7B1A002BEA6F /* LoadingViewController.swift */; };
 		2CC6C7F121E87D5A00BB3171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F021E87D5A00BB3171 /* AppDelegate.swift */; };
-		2CC6C7F321E87D5A00BB3171 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F221E87D5A00BB3171 /* ViewController.swift */; };
 		2CC6C7F621E87D5A00BB3171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F421E87D5A00BB3171 /* Main.storyboard */; };
 		2CC6C7F821E87D5C00BB3171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F721E87D5C00BB3171 /* Assets.xcassets */; };
 		2CC6C7FB21E87D5C00BB3171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F921E87D5C00BB3171 /* LaunchScreen.storyboard */; };
+		2CC6C80321E87FCC00BB3171 /* ApplicationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80221E87FCC00BB3171 /* ApplicationWindow.swift */; };
+		2CC6C80521E885B000BB3171 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80421E885B000BB3171 /* RootViewController.swift */; };
+		2CC6C80721E885F100BB3171 /* FlowControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80621E885F100BB3171 /* FlowControllerDelegate.swift */; };
+		2CC6C80921E8864F00BB3171 /* FlowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80821E8864F00BB3171 /* FlowItem.swift */; };
+		2CC6C80B21E8872300BB3171 /* FlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80A21E8872300BB3171 /* FlowViewController.swift */; };
+		2CC6C80D21E88A4B00BB3171 /* FlowControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80C21E88A4B00BB3171 /* FlowControllable.swift */; };
+		2CC6C80F21E88A6100BB3171 /* FlowItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80E21E88A6100BB3171 /* FlowItemType.swift */; };
+		2CC6C81121E88C2E00BB3171 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C81021E88C2E00BB3171 /* UserProfile.swift */; };
+		2CC6C81721E89AF700BB3171 /* FlowControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C81621E89AF700BB3171 /* FlowControllerType.swift */; };
+		2CC6C81A21E8B94E00BB3171 /* BaseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C81921E8B94E00BB3171 /* BaseFlowViewController.swift */; };
+		2CC6C81C21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C81B21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift */; };
+		2CC6C81E21E8D24300BB3171 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C81D21E8D24300BB3171 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CA7C35B21EC771C002BEA6F /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
+		2CA7C35D21EC7B1A002BEA6F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2CC6C7ED21E87D5A00BB3171 /* OnboardingPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnboardingPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC6C7F021E87D5A00BB3171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CC6C7F221E87D5A00BB3171 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2CC6C7F521E87D5A00BB3171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CC6C7F721E87D5C00BB3171 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC6C7FA21E87D5C00BB3171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC6C7FC21E87D5C00BB3171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CC6C80221E87FCC00BB3171 /* ApplicationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationWindow.swift; sourceTree = "<group>"; };
+		2CC6C80421E885B000BB3171 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		2CC6C80621E885F100BB3171 /* FlowControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllerDelegate.swift; sourceTree = "<group>"; };
+		2CC6C80821E8864F00BB3171 /* FlowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowItem.swift; sourceTree = "<group>"; };
+		2CC6C80A21E8872300BB3171 /* FlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowViewController.swift; sourceTree = "<group>"; };
+		2CC6C80C21E88A4B00BB3171 /* FlowControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllable.swift; sourceTree = "<group>"; };
+		2CC6C80E21E88A6100BB3171 /* FlowItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowItemType.swift; sourceTree = "<group>"; };
+		2CC6C81021E88C2E00BB3171 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		2CC6C81621E89AF700BB3171 /* FlowControllerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllerType.swift; sourceTree = "<group>"; };
+		2CC6C81921E8B94E00BB3171 /* BaseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFlowViewController.swift; sourceTree = "<group>"; };
+		2CC6C81B21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+OnboardingPrototype.swift"; sourceTree = "<group>"; };
+		2CC6C81D21E8D24300BB3171 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +81,50 @@
 			isa = PBXGroup;
 			children = (
 				2CC6C7F021E87D5A00BB3171 /* AppDelegate.swift */,
-				2CC6C7F221E87D5A00BB3171 /* ViewController.swift */,
+				2CC6C80221E87FCC00BB3171 /* ApplicationWindow.swift */,
+				2CC6C81D21E8D24300BB3171 /* MainViewController.swift */,
+				2CA7C35D21EC7B1A002BEA6F /* LoadingViewController.swift */,
+				2CA7C35B21EC771C002BEA6F /* FlowCoordinator.swift */,
 				2CC6C7F421E87D5A00BB3171 /* Main.storyboard */,
+				2CC6C81221E88E7500BB3171 /* FlowControl */,
+				2CC6C81321E8942800BB3171 /* Extensions */,
 				2CC6C7F721E87D5C00BB3171 /* Assets.xcassets */,
 				2CC6C7F921E87D5C00BB3171 /* LaunchScreen.storyboard */,
 				2CC6C7FC21E87D5C00BB3171 /* Info.plist */,
 			);
 			path = OnboardingPrototype;
+			sourceTree = "<group>";
+		};
+		2CC6C81221E88E7500BB3171 /* FlowControl */ = {
+			isa = PBXGroup;
+			children = (
+				2CC6C81821E8B49400BB3171 /* FlowViewControllers */,
+				2CC6C80421E885B000BB3171 /* RootViewController.swift */,
+				2CC6C80A21E8872300BB3171 /* FlowViewController.swift */,
+				2CC6C80621E885F100BB3171 /* FlowControllerDelegate.swift */,
+				2CC6C80821E8864F00BB3171 /* FlowItem.swift */,
+				2CC6C80E21E88A6100BB3171 /* FlowItemType.swift */,
+				2CC6C80C21E88A4B00BB3171 /* FlowControllable.swift */,
+				2CC6C81621E89AF700BB3171 /* FlowControllerType.swift */,
+				2CC6C81021E88C2E00BB3171 /* UserProfile.swift */,
+			);
+			path = FlowControl;
+			sourceTree = "<group>";
+		};
+		2CC6C81321E8942800BB3171 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CC6C81B21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2CC6C81821E8B49400BB3171 /* FlowViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CC6C81921E8B94E00BB3171 /* BaseFlowViewController.swift */,
+			);
+			path = FlowViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +198,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CC6C7F321E87D5A00BB3171 /* ViewController.swift in Sources */,
+				2CC6C80921E8864F00BB3171 /* FlowItem.swift in Sources */,
+				2CC6C81E21E8D24300BB3171 /* MainViewController.swift in Sources */,
+				2CA7C35E21EC7B1A002BEA6F /* LoadingViewController.swift in Sources */,
+				2CC6C81721E89AF700BB3171 /* FlowControllerType.swift in Sources */,
+				2CC6C80F21E88A6100BB3171 /* FlowItemType.swift in Sources */,
+				2CC6C81121E88C2E00BB3171 /* UserProfile.swift in Sources */,
+				2CC6C80B21E8872300BB3171 /* FlowViewController.swift in Sources */,
+				2CC6C80D21E88A4B00BB3171 /* FlowControllable.swift in Sources */,
+				2CC6C80721E885F100BB3171 /* FlowControllerDelegate.swift in Sources */,
+				2CA7C35C21EC771C002BEA6F /* FlowCoordinator.swift in Sources */,
+				2CC6C80321E87FCC00BB3171 /* ApplicationWindow.swift in Sources */,
+				2CC6C81A21E8B94E00BB3171 /* BaseFlowViewController.swift in Sources */,
+				2CC6C80521E885B000BB3171 /* RootViewController.swift in Sources */,
 				2CC6C7F121E87D5A00BB3171 /* AppDelegate.swift in Sources */,
+				2CC6C81C21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
