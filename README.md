@@ -79,25 +79,25 @@ Keep in mind all these types are here just for example and can be replaced with 
 
 
 
-### FlowControllerDelegate
+### FlowControllableDelegate
 
-Let's take a look at the `FlowControllerDelegate` protocol:
+Let's take a look at the `FlowControllableDelegate` protocol:
 
 ```
-protocol FlowControllerDelegate: class {
+protocol FlowControllableDelegate: class {
 
-    func flowControllerShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem])
-    func flowControllerShouldSkip(_ flowControllable: FlowControllable)
+    func flowControllableShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem])
+    func flowControllableShouldSkip(_ flowControllable: FlowControllable)
 }
 ```
 
 This protocol is how `FlowControllable`s will report changes to their `delegate`. It is the "contract" between the delegate and the `FlowControllable` how the communication will be conducted.
 
-If the user wishes to skip the current `FlowControllable` object in the flow, it will call its delegate method `flowControllerShouldSkip(_:)`, notice how this is independent on the implementation of skip feature in the presented `FlowControllable` it can be button, it could be some gesture which means "skip this view controller", it can be whatever, but when it happens, `delegate` gets informed about it and will undertake actions to handle this event.
+If the user wishes to skip the current `FlowControllable` object in the flow, it will call its delegate method `flowControllableShouldSkip(_:)`, notice how this is independent on the implementation of skip feature in the presented `FlowControllable` it can be button, it could be some gesture which means "skip this view controller", it can be whatever, but when it happens, `delegate` gets informed about it and will undertake actions to handle this event.
 
-`FlowControllable` objects can also have some kind of data entry (e.g. text fields, drop-down menus...), so user chooses some options, enters his info or whatever - now when the user is done with that, we want to save the data temporarily until the whole process is finished. This is where `flowControllerShouldFinishShowing(_:with:)` has its purpose - the `FlowControllable` has a duty to collect the data user entered and wrap each part of data in `FlowItem`. 
+`FlowControllable` objects can also have some kind of data entry (e.g. text fields, drop-down menus...), so user chooses some options, enters his info or whatever - now when the user is done with that, we want to save the data temporarily until the whole process is finished. This is where `flowControllableShouldFinishShowing(_:with:)` has its purpose - the `FlowControllable` has a duty to collect the data user entered and wrap each part of data in `FlowItem`. 
 
-Since data can consist of more parts sometimes more `FlowItem`s may be needed to wrap all data. There is no problem with that since `flowControllerShouldFinishShowing(_:with:)` gets an array of `FlowItem`s as a parameter (`[FlowItem]`). The delegate will then do the rest of the work to handle the event. 
+Since data can consist of more parts sometimes more `FlowItem`s may be needed to wrap all data. There is no problem with that since `flowControllableShouldFinishShowing(_:with:)` gets an array of `FlowItem`s as a parameter (`[FlowItem]`). The delegate will then do the rest of the work to handle the event. 
 
 It will most likely hang on to the data until the whole flow finishes and then pass all gathered data to `completion` block provided in the `setup(with:completion:)` method. 
 

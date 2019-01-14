@@ -4,7 +4,7 @@ class FlowViewController: UIViewController, FlowControllable {
     
     var type: FlowControllerType
     var profile: UserProfile?
-    var delegate: FlowControllerDelegate?
+    var delegate: FlowControllableDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

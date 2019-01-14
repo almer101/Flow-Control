@@ -8,7 +8,7 @@ class BaseFlowViewController: UIViewController, FlowControllable {
     
     var type: FlowControllerType = .none
     var profile: UserProfile?
-    var delegate: FlowControllerDelegate?
+    var delegate: FlowControllableDelegate?
     private var labelText: String = ""
     
     override func viewDidLoad() {
@@ -51,12 +51,12 @@ class BaseFlowViewController: UIViewController, FlowControllable {
         default:
             break
         }
-        delegate?.flowControllerShouldFinishShowing(self, with: items)
+        delegate?.flowControllableShouldFinishShowing(self, with: items)
     }
     
     
     @IBAction func secondaryButtonTapped(_ sender: UIButton) {
-        delegate?.flowControllerShouldSkip(self)
+        delegate?.flowControllableShouldSkip(self)
     }
 }
 

@@ -78,9 +78,9 @@ extension RootViewController {
     }
 }
 
-extension RootViewController: FlowControllerDelegate {
+extension RootViewController: FlowControllableDelegate {
     
-    func flowControllerShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem]) {
+    func flowControllableShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem]) {
         let types = items.map { $0.type }
         
         flowItems.removeAll { item in types.contains { $0 == item.type } }
@@ -89,7 +89,7 @@ extension RootViewController: FlowControllerDelegate {
         showNextViewController()
     }
     
-    func flowControllerShouldSkip(_ flowControllable: FlowControllable) {
+    func flowControllableShouldSkip(_ flowControllable: FlowControllable) {
         showNextViewController()
     }
     
