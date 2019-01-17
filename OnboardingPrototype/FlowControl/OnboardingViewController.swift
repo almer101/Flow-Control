@@ -17,10 +17,14 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupOnboardingEditProfile()
         addChildController(mainFlowViewController)
+        
+        // setup the flow and start it
+        setupEditProfileFlow()
         mainFlowViewController.startFlow()
     }
+    
+    // MARK: - Manipulation with child controllers
     
     private func addChildController(_ vc: UIViewController) {
         addChild(vc)
@@ -39,40 +43,11 @@ class OnboardingViewController: UIViewController {
     
     private func removeChildController(_ vc: UIViewController) {
         vc.willMove(toParent: nil)
-        vc.removeFromParent()
         vc.view.removeFromSuperview()
+        vc.removeFromParent()
     }
     
-    private func setupOnboardingEditProfile() {
-        mainFlowViewController.setup(with: [.firstNameAndLastName, .mood, .company]) { [weak self] items in
-            guard let self = self else { return }
-            
-            items.forEach { self.report.append("\($0.type)\n") }
-            
-            self.showLoadingViewController()
-        
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-                if let loading = self?.loadingViewController {
-                    self?.removeChildController(loading)
-                }
-                self?.showBeaconFlow()
-            }
-        }
-    }
-    
-    private func showBeaconFlow() {
-        mainFlowViewController.invalidate()
-        
-        mainFlowViewController.setup(with: [.beaconInfo, .beaconSearch, .beaconFailed, .finish]) { [weak self] items in
-            guard let self = self else { return }
-            
-            items.forEach { self.report.append("\($0.type)\n") }
-            print(self.report)
-            
-            ApplicationWindow.main?.showMainScreen()
-        }
-        mainFlowViewController.startFlow()
-    }
+    // MARK: - Loading controller setup
     
     private func showLoadingViewController() {
         guard let loading = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else { return }
@@ -81,4 +56,48 @@ class OnboardingViewController: UIViewController {
         addChildController(loading)
     }
 
+}
+
+// MARK: - Flow setup methods
+
+extension OnboardingViewController {
+    
+    private func setupEditProfileFlow() {
+        
+        // setup new new flow
+        mainFlowViewController.setup(with: [.firstNameAndLastName, .mood, .company]) { [weak self] items in
+            guard let self = self else { return }
+            
+            items.forEach { self.report.append("\($0.type)\n") }
+            
+            self.showLoadingViewController()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                if let loading = self?.loadingViewController {
+                    self?.removeChildController(loading)
+                    self?.loadingViewController = nil
+                }
+                self?.setupBeaconFlow()
+            }
+        }
+    }
+    
+    private func setupBeaconFlow() {
+        // invalidate the current flow
+        mainFlowViewController.invalidate()
+        
+        // setup the new flow
+        mainFlowViewController.setup(with: [.beaconInfo, .beaconSearch, .beaconFailed, .finish]) { [weak self] items in
+            guard let self = self else { return }
+            
+            items.forEach { self.report.append("\($0.type)\n") }
+            print(self.report)
+            
+            ApplicationWindow.main?.showMainScreen()
+        }
+        
+        // start the new flow
+        mainFlowViewController.startFlow()
+    }
+    
 }

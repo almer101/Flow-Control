@@ -64,6 +64,11 @@ class ApplicationWindow: UIWindow {
         container.child = rootViewController
     }
     
+    func showOnboarding() {
+        let onboarding = OnboardingViewController()
+        container.child = onboarding
+    }
+    
     func showMainScreen() {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else { return }
         container.child = vc

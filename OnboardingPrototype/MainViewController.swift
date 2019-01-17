@@ -23,8 +23,6 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func repeatButtonTapped(_ sender: UIButton) {
-//        FlowCoordinator.shared.showOnboarding()
-        let onboarding = OnboardingViewController()
-        present(onboarding, animated: true, completion: nil)
+        ApplicationWindow.main?.showOnboarding()
     }
 }
