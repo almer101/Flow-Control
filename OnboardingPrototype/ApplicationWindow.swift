@@ -59,7 +59,7 @@ class ApplicationWindow: UIWindow {
     }
     
     func showControllerFlow(with types: [FlowControllerType], completion: @escaping ([FlowItem]) -> Void) {
-        let rootViewController = RootViewController()
+        let rootViewController = MainFlowViewController()
         rootViewController.setup(with: types, completion: completion)
         container.child = rootViewController
     }

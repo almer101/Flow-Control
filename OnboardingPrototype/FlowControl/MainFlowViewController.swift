@@ -1,18 +1,45 @@
 import UIKit
 
-class RootViewController: UINavigationController {
+class MainFlowViewController: UIViewController {
 
     private var types: [FlowControllerType] = []
     private var flowItems: [FlowItem] = []
     private var completion: ([FlowItem]) -> Void = { _ in }
+    private let navController = UINavigationController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.navigationBar.topItem?.title = "Flow Control"
-        navigationController?.view.backgroundColor = .white
+ 
+        setupNavigationController()
+//        showNextViewController()
+    }
+    
+    private func setupNavigationController() {
+        navController.navigationBar.topItem?.title = "Flow Control"
         
+        addChild(navController)
+        view.addSubview(navController.view)
+        
+        let constraints = [
+            navController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            navController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            navController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+            navController.view.leftAnchor.constraint(equalTo: view.leftAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        navController.didMove(toParent: self)
+    }
+    
+    public func startFlow() {
         showNextViewController()
+    }
+    
+    public func invalidate() {
+        types.removeAll()
+        flowItems.removeAll()
+        completion = { _ in }
+        navController.viewControllers.removeAll()
     }
     
     private func showNextViewController() {
@@ -54,12 +81,12 @@ class RootViewController: UINavigationController {
             print("Default case of switch statement - type \(type)")
         }
         
-        pushViewController(viewController, animated: true)
+        navController.pushViewController(viewController, animated: true)
     }
     
     // when nil is returned it means the end is reached.
     private func nextIndex() -> Int? {
-        guard let visibleViewController = visibleViewController as? FlowControllable else { return 0 }
+        guard let visibleViewController = navController.visibleViewController as? FlowControllable else { return 0 }
         let type = visibleViewController.type
         
         if let index = types.firstIndex(of: type) {
@@ -70,7 +97,7 @@ class RootViewController: UINavigationController {
     
 }
 
-extension RootViewController {
+extension MainFlowViewController {
     
     func setup(with types: [FlowControllerType], completion: @escaping ([FlowItem]) -> Void) {
         self.types = types
@@ -78,7 +105,7 @@ extension RootViewController {
     }
 }
 
-extension RootViewController: FlowControllableDelegate {
+extension MainFlowViewController: FlowControllableDelegate {
     
     func flowControllableShouldFinishShowing(_ flowControllable: FlowControllable, with items: [FlowItem]) {
         let types = items.map { $0.type }

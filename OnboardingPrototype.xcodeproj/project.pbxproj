@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C20DFCF21F0B07A004206BC /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20DFCE21F0B07A004206BC /* OnboardingViewController.swift */; };
 		2CA7C35C21EC771C002BEA6F /* FlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C35B21EC771C002BEA6F /* FlowCoordinator.swift */; };
 		2CA7C35E21EC7B1A002BEA6F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7C35D21EC7B1A002BEA6F /* LoadingViewController.swift */; };
 		2CC6C7F121E87D5A00BB3171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F021E87D5A00BB3171 /* AppDelegate.swift */; };
@@ -14,7 +15,7 @@
 		2CC6C7F821E87D5C00BB3171 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F721E87D5C00BB3171 /* Assets.xcassets */; };
 		2CC6C7FB21E87D5C00BB3171 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC6C7F921E87D5C00BB3171 /* LaunchScreen.storyboard */; };
 		2CC6C80321E87FCC00BB3171 /* ApplicationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80221E87FCC00BB3171 /* ApplicationWindow.swift */; };
-		2CC6C80521E885B000BB3171 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80421E885B000BB3171 /* RootViewController.swift */; };
+		2CC6C80521E885B000BB3171 /* MainFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80421E885B000BB3171 /* MainFlowViewController.swift */; };
 		2CC6C80721E885F100BB3171 /* FlowControllableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80621E885F100BB3171 /* FlowControllableDelegate.swift */; };
 		2CC6C80921E8864F00BB3171 /* FlowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80821E8864F00BB3171 /* FlowItem.swift */; };
 		2CC6C80D21E88A4B00BB3171 /* FlowControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6C80C21E88A4B00BB3171 /* FlowControllable.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C20DFCE21F0B07A004206BC /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		2CA7C35B21EC771C002BEA6F /* FlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinator.swift; sourceTree = "<group>"; };
 		2CA7C35D21EC7B1A002BEA6F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2CC6C7ED21E87D5A00BB3171 /* OnboardingPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnboardingPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,7 +38,7 @@
 		2CC6C7FA21E87D5C00BB3171 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC6C7FC21E87D5C00BB3171 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CC6C80221E87FCC00BB3171 /* ApplicationWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationWindow.swift; sourceTree = "<group>"; };
-		2CC6C80421E885B000BB3171 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		2CC6C80421E885B000BB3171 /* MainFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowViewController.swift; sourceTree = "<group>"; };
 		2CC6C80621E885F100BB3171 /* FlowControllableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllableDelegate.swift; sourceTree = "<group>"; };
 		2CC6C80821E8864F00BB3171 /* FlowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowItem.swift; sourceTree = "<group>"; };
 		2CC6C80C21E88A4B00BB3171 /* FlowControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowControllable.swift; sourceTree = "<group>"; };
@@ -97,7 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				2CC6C81821E8B49400BB3171 /* FlowViewControllers */,
-				2CC6C80421E885B000BB3171 /* RootViewController.swift */,
+				2C20DFCE21F0B07A004206BC /* OnboardingViewController.swift */,
+				2CC6C80421E885B000BB3171 /* MainFlowViewController.swift */,
 				2CC6C80621E885F100BB3171 /* FlowControllableDelegate.swift */,
 				2CC6C80821E8864F00BB3171 /* FlowItem.swift */,
 				2CC6C80E21E88A6100BB3171 /* FlowItemType.swift */,
@@ -202,11 +205,12 @@
 				2CC6C80F21E88A6100BB3171 /* FlowItemType.swift in Sources */,
 				2CC6C81121E88C2E00BB3171 /* UserProfile.swift in Sources */,
 				2CC6C80D21E88A4B00BB3171 /* FlowControllable.swift in Sources */,
+				2C20DFCF21F0B07A004206BC /* OnboardingViewController.swift in Sources */,
 				2CC6C80721E885F100BB3171 /* FlowControllableDelegate.swift in Sources */,
 				2CA7C35C21EC771C002BEA6F /* FlowCoordinator.swift in Sources */,
 				2CC6C80321E87FCC00BB3171 /* ApplicationWindow.swift in Sources */,
 				2CC6C81A21E8B94E00BB3171 /* BaseFlowViewController.swift in Sources */,
-				2CC6C80521E885B000BB3171 /* RootViewController.swift in Sources */,
+				2CC6C80521E885B000BB3171 /* MainFlowViewController.swift in Sources */,
 				2CC6C7F121E87D5A00BB3171 /* AppDelegate.swift in Sources */,
 				2CC6C81C21E8CFA800BB3171 /* UIColor+OnboardingPrototype.swift in Sources */,
 			);
